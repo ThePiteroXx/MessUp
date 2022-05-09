@@ -1,0 +1,17 @@
+@keyframes show-message {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes skeleton-loading {
+  from {
+    background-color: rgba(231, 231, 231, 0.514);
+  }
+  to {
+    background-color: rgba(134, 134, 134, 0.829);
+  }
+}

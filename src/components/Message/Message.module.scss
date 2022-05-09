@@ -1,0 +1,48 @@
+@use 'utils/scss/media';
+
+.wrapper {
+  margin: 8px 9px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  
+  p {
+    padding: 8px 10px;
+    display: block;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.9em;
+    max-width: 50%;
+    overflow-wrap: break-word;
+
+    &:hover + small {
+      display: inline-block;
+    }
+  }
+
+  small {
+    display: none;
+    font-size: 0.7em;
+    color: var(--text-color);
+  }
+
+  .me {
+    background-color: var(--primary-color);
+  }
+
+  .friend {
+    background-color: var(--text-color);
+  }
+
+}
+.own {
+  flex-direction: row-reverse;
+}
+
+@include media.large {
+  .wrapper {
+    p {
+      max-width: 35%;
+    }
+  }
+}

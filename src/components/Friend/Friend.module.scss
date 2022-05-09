@@ -1,0 +1,53 @@
+@use 'utils/scss/media';
+
+.wrapper {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  max-width: 360px;
+  height: 100px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.unread {
+  position: absolute;
+  padding: 2px;
+  top: 12px;
+  left: 12px;
+  font-size: 0.6em;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: var(--highlight-color);
+  color: #fff;
+  border-radius: 4px;
+}
+
+.body {
+  width: 70%;
+  strong {
+    text-transform: capitalize;
+    color: var(--heading-color);
+  }
+  p {
+    color: var(--text-color);
+  }
+}
+
+@include media.medium {
+  .wrapper {
+    margin: 0 auto;
+  }
+
+  .body {
+    strong {
+      color: #fff;
+    }
+
+    p {
+      color: rgb(197, 197, 197);
+    }
+  }
+}

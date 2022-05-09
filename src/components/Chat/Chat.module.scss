@@ -1,0 +1,92 @@
+@use 'utils/scss/media';
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--bg-color);
+  width: 100%;
+  height: calc(100vh - 104px);
+  min-height: 500px;
+}
+
+.header {
+  padding: 10px 0;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  grid-template-rows: 1fr;
+  border-bottom: 1px solid rgba(12, 12, 12, 0.2);
+
+  &__user {
+    justify-self: center;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    transform: translateX(-40px);
+
+    strong {
+      text-transform: capitalize;
+      color: var(--heading-color);
+      font-size: 1.4em;
+    }
+  }
+}
+
+.back {
+  width: 40px;
+  svg {
+    filter: invert(47%) sepia(19%) saturate(6242%) hue-rotate(228deg) brightness(97%) contrast(95%);
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+}
+
+.body {
+  max-height: calc(78% - 5px);
+  overflow-y: auto;
+}
+
+.message-form {
+  position: absolute;
+  padding: 5px 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: var(--bg-color);
+
+  textarea {
+    position: relative;
+    padding: 8px 5px;
+    width: 250px;
+    border-radius: 10px;
+    resize: none;
+  }
+}
+
+@include media.medium {
+  .wrapper {
+    height: calc(100vh - 158px);
+    min-height: 600px;
+  }
+}
+
+@include media.large {
+  .message-form {
+    padding: 15px 0;
+    justify-content: center;
+    gap: 25px;
+
+    textarea {
+      padding: 12px 6px;
+      width: 50%;
+    }
+
+    button {
+      padding: 10px 20px;
+    }
+  }
+}

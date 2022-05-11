@@ -8,7 +8,7 @@ import Logo from 'assets/icons/logo.svg';
 
 const Navbar = () => {
   const { logout, currentState } = useLogout();
-  const { user } = useAuthContext();
+  const { user } = useAuthContext(); // your logged in user
   return (
     <nav className={styles.navbar}>
       <ul>

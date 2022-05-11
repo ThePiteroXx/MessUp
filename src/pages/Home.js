@@ -1,4 +1,4 @@
-import { useCollection } from 'hooks/useCollection';
+import { useDocument } from 'hooks/useCollection';
 import { useAuthContext } from 'hooks/auth/useAuthContext';
 import { useChatContext } from 'hooks/useChatContext';
 
@@ -10,9 +10,9 @@ import Chat from 'components/Chat/Chat';
 const Home = () => {
   const { user } = useAuthContext();
   const { chat, dispatchChat } = useChatContext();
-  // current user doc
-  const { documents } = useCollection('users', ['uid', '==', user.uid]);
-  const friends = documents ? documents[0].friends : null;
+
+  const { document } = useDocument('users', ['uid', '==', user.uid]); // current logged in user document
+  const friends = document ? document.friends : null;
 
   return (
     <section style={{ position: 'relative', width: '100%' }}>

@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useCollection } from 'hooks/useCollection';
+import { useDocument } from 'hooks/useCollection';
 import { useAuthContext } from 'hooks/auth/useAuthContext';
 import Moment from 'react-moment';
 
@@ -16,10 +16,7 @@ import { updateDoc, doc, arrayUnion, deleteDoc } from 'firebase/firestore';
 const InviteCard = ({ idDoc, uid, createdAt }) => {
   // the user who are you logged in
   const { user: currentUser } = useAuthContext();
-  const { documents } = useCollection('users', ['uid', '==', uid]);
-
-  // the user who invited you to friends
-  const user = documents ? documents[0] : null;
+  const { document: user } = useDocument('users', ['uid', '==', uid]); // the user who invited you to friends
 
   // remove request
   const removeRequest = useCallback(() => {

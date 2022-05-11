@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { useCollection } from 'hooks/useCollection';
+import { useDocument } from 'hooks/useCollection';
 import { Link } from 'react-router-dom';
 
 // styles
@@ -14,11 +14,8 @@ import { onSnapshot, doc, updateDoc, getDoc } from 'firebase/firestore';
 
 const Friend = ({ friendUid, currentUserUid, dispatchChat }) => {
   const idChat = currentUserUid > friendUid ? `${currentUserUid + friendUid}` : `${friendUid + currentUserUid}`;
-  const { documents, currentState } = useCollection('users', ['uid', '==', friendUid]);
+  const { document: user, currentState } = useDocument('users', ['uid', '==', friendUid]); // your friend
   const [lastMsg, setLastMsg] = useState(null);
-
-  //friend
-  const user = documents ? documents[0] : null;
 
   const selectUser = useCallback(async () => {
     dispatchChat({ user: friendUid, idChat });

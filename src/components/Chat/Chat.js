@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback } from 'react';
 import { useChatContext } from 'hooks/useChatContext';
-import { useCollection } from 'hooks/useCollection';
+import { useDocument, useCollectionWithSub } from 'hooks/useCollection';
 
 // firebase
 import { db } from 'utils/configs/firebaseConfig';
-import { addDoc, collection, Timestamp, query, orderBy, onSnapshot, setDoc, doc, getDoc, updateDoc } from 'firebase/firestore';
+import { addDoc, collection, Timestamp, setDoc, doc, getDoc, updateDoc } from 'firebase/firestore';
 
 // styles
 import styles from './Chat.module.scss';
@@ -17,11 +17,15 @@ import Message from '../Message/Message';
 import { useForm } from 'react-hook-form';
 
 const Chat = ({ chat, currentUserUid }) => {
-  const { documents } = useCollection('users', ['uid', '==', chat.user]);
-  const friend = documents ? documents[0] : null; // the friend you are chatting
+  const { document: friend } = useDocument('users', ['uid', '==', chat.user]); // the friend who you are chatting
+  const { documents: msgs, currentState: msgsState } = useCollectionWithSub({
+    _collection: 'messages',
+    id: chat.idChat,
+    subCollection: 'chat',
+    _orderBy: ['createdAt', 'asc'],
+  });
   const { dispatchChat } = useChatContext();
   const { register, handleSubmit, reset } = useForm();
-  const [msgs, setMsgs] = useState([]);
 
   const onSubmit = useCallback(
     ({ message }) => {
@@ -57,24 +61,6 @@ const Chat = ({ chat, currentUserUid }) => {
     }
   }, [currentUserUid, chat.idChat, dispatchChat]);
 
-  // set messages user
-  useEffect(() => {
-    const msgsRef = collection(db, 'messages', chat.idChat, 'chat');
-    const q = query(msgsRef, orderBy('createdAt', 'asc'));
-
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      let msgs = [];
-      querySnapshot.forEach((doc) => {
-        msgs.push({ ...doc.data(), id: doc.id });
-      });
-      setMsgs(msgs);
-    });
-
-    return () => unsubscribe();
-  }, [chat.idChat]);
-
-  // set friend
-
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -88,7 +74,9 @@ const Chat = ({ chat, currentUserUid }) => {
           </div>
         )}
       </div>
-      <div className={styles.body}>{msgs.length > 0 ? msgs.map((msg) => <Message key={msg.id} msg={msg} currentUser={currentUserUid} />) : null}</div>
+      <div className={styles.body}>
+        {msgsState === 'loaded' ? msgs.map((msg) => <Message key={msg.id} msg={msg} currentUser={currentUserUid} />) : null}
+      </div>
       <form className={styles['message-form']} onSubmit={handleSubmit(onSubmit)}>
         <TextareaAutosize className="input" placeholder="Enter your message" maxRows={4} {...register('message')} onKeyUp={onEnterPress} />
         <button className="btn" type="submit">

@@ -11,5 +11,8 @@ service cloud.firestore {
     match /lastMsg/{document=**} {
       allow read, create, update: if request.auth != null;
     }
+    match /invitation/{document=**} {
+      allow read, create, update: if request.auth != null;
+    }
   }
 }

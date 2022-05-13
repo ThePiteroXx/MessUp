@@ -64,7 +64,7 @@ const Chat = ({ chat, currentUserUid }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
-        <div className={styles.back} onClick={onExitChat}>
+        <div className={styles.back} onClick={onExitChat} data-testid="exit-chat">
           <Arrow />
         </div>
         {friend && (
@@ -77,7 +77,7 @@ const Chat = ({ chat, currentUserUid }) => {
       <div className={styles.body}>
         {msgsState === 'loaded' ? msgs.map((msg) => <Message key={msg.id} msg={msg} currentUser={currentUserUid} />) : null}
       </div>
-      <form className={styles['message-form']} onSubmit={handleSubmit(onSubmit)} role="form">
+      <form className={styles['message-form']} onSubmit={handleSubmit(onSubmit)}>
         <TextareaAutosize className="input" placeholder="Enter your message" maxRows={4} {...register('message')} onKeyUp={onEnterPress} />
         <button className="btn" type="submit">
           Send

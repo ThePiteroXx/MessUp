@@ -6,7 +6,7 @@ import { useChatContext } from 'hooks/useChatContext';
 import styles from './Aside.module.scss';
 
 // components
-import EditProfil from 'components/EditProfile/EditProfil';
+import EditProfile from 'components/EditProfile/EditProfile';
 import Friend from 'components/Friend/Friend';
 
 const Aside = () => {
@@ -18,7 +18,7 @@ const Aside = () => {
 
   return (
     <aside className={styles.wrapper}>
-      <EditProfil />
+      <EditProfile />
       {friends && (
         <div className={styles.friends}>
           {friends.length > 0 ? (

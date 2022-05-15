@@ -30,9 +30,6 @@ const UserProfile = () => {
       // update profile
       await updateProfile(user, { photoURL: imgUrl });
       updateDocument(user.uid, { photoURL: imgUrl });
-      // await updateDoc(doc(db, 'users', user.uid), {
-      //   photoURL: imgUrl,
-      // });
 
       setIsPending(false);
     } catch (err) {

@@ -3,7 +3,7 @@ import { useAuthContext } from 'hooks/auth/useAuthContext';
 import { useChatContext } from 'hooks/useChatContext';
 
 // components
-import EditProfil from 'components/EditProfile/EditProfil';
+import EditProfile from 'components/EditProfile/EditProfile';
 import Friend from 'components/Friend/Friend';
 import Chat from 'components/Chat/Chat';
 
@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <section style={{ position: 'relative', width: '100%' }}>
       <div className="only-mobile" style={chat && { display: 'none' }}>
-        <EditProfil />
+        <EditProfile />
         {friends && (
           <>
             {friends.length > 0 ? (

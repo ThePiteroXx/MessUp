@@ -9,10 +9,10 @@ import './App.scss';
 import Home from 'pages/Home';
 import Login from 'pages/Login';
 import Signup from 'pages/Signup';
-import ForgotPassword from 'pages/ForgotPassword';
+import ForgotPassword from 'pages/ForgotPassword/ForgotPassword';
 import ResetPassword from 'pages/ResetPassword';
-import UserProfile from 'pages/UserProfile';
-import AddUser from 'pages/AddUser';
+import UserProfile from 'pages/UserProfile/UserProfile';
+import AddUser from 'pages/AddUser/AddUser';
 import Notifications from 'pages/Notifications';
 import Aside from 'components/Aside/Aside';
 

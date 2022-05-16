@@ -13,7 +13,7 @@ import ForgotPassword from 'pages/ForgotPassword/ForgotPassword';
 import ResetPassword from 'pages/ResetPassword';
 import UserProfile from 'pages/UserProfile/UserProfile';
 import AddUser from 'pages/AddUser/AddUser';
-import Notifications from 'pages/Notifications';
+import Notifications from 'pages/Notifications/Notifications';
 import Aside from 'components/Aside/Aside';
 
 // providers
@@ -64,7 +64,7 @@ const App = () => {
   }, [user, updateDocument]);
 
   return (
-    <div className="App">
+    <div className={`app ${user && 'dashboard'}`}>
       {authIsReady && (
         <ChatContextProvider>
           <BrowserRouter>

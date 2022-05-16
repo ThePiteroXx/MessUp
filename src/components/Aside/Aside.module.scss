@@ -7,9 +7,9 @@
 @include media.medium {
   .wrapper {
     display: block;
-    width: clamp(300px, 30%, 400px);
+    grid-column: 1;
+    grid-row: 1 / -1;
     min-height: 755px;
-    height: 100vh;
     background-color: var(--primary-color);
   }
 }

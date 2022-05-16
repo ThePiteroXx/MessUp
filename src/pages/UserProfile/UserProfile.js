@@ -8,7 +8,7 @@ import styles from './UserProfile.module.scss';
 import ChangePassForm from 'components/ChangePassForm/ChangePassForm';
 
 // firebase
-import { storage } from '../utils/configs/firebaseConfig';
+import { storage } from '../../utils/configs/firebaseConfig';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { updateProfile } from 'firebase/auth';
 import { useFirestore } from 'hooks/useFirestore';
@@ -38,11 +38,11 @@ const UserProfile = () => {
   };
 
   const handleFileChange = (e) => {
-    let selected = e.target.files[0];
+    const selected = e.target.files[0];
 
     if (!selected.type.includes('image')) return;
 
-    if (selected.size > 1000000) return;
+    // if (selected.size > 1000000) return;
 
     changeAvatar(selected);
   };

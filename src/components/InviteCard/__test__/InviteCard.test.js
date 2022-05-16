@@ -14,8 +14,8 @@ let mockDocs = [
   },
 ];
 jest.mock('hooks/useCollection', () => ({
-  useCollection: () => ({
-    documents: mockDocs,
+  useDocument: () => ({
+    document: mockDocs,
   }),
 }));
 

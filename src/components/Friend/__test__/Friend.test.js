@@ -15,9 +15,9 @@ let mockState = 'empty';
 let mockDocs = null;
 
 jest.mock('hooks/useCollection', () => ({
-  useCollection: () => ({
+  useDocument: () => ({
     currentState: mockState,
-    documents: mockDocs,
+    document: mockDocs,
   }),
 }));
 
@@ -42,7 +42,7 @@ describe('Friend', () => {
       expect(friendWrapper).toBeTruthy();
     });
 
-    it('Click on the <Friend /> and expect to dispatchChat have been called one time', () => {
+    it('Click on the <Friend /> and expect to dispatchChat have been called', () => {
       renderComponent();
       const friendWrapper = screen.getByTestId('friend');
       fireEvent.click(friendWrapper);

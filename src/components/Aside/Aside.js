@@ -24,7 +24,7 @@ const Aside = () => {
           {friends.length > 0 ? (
             friends.map((uid) => <Friend key={uid} friendUid={uid} currentUserUid={user.uid} dispatchChat={dispatchChat} />)
           ) : (
-            <p style={{ textAlign: 'center' }}>You haven't any added friends</p>
+            <p style={{ textAlign: 'center', color: 'white' }}>You haven't any added friends</p>
           )}
         </div>
       )}

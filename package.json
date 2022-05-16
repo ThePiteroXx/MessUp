@@ -4,9 +4,6 @@
   "private": true,
   "dependencies": {
     "@cassiozen/usestatemachine": "^1.0.1",
-    "@testing-library/jest-dom": "^5.16.3",
-    "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
     "firebase": "^9.6.10",
     "moment": "^2.29.3",
     "react": "^17.0.2",
@@ -24,6 +21,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:e2e": "cypress open --project ./src/e2e",
     "eject": "react-scripts eject"
   },
   "jest": {
@@ -70,7 +68,14 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.17.0",
+    "@cypress/react": "^5.12.4",
+    "@testing-library/cypress": "^8.0.2",
+    "@testing-library/jest-dom": "^5.16.3",
+    "@testing-library/react": "^12.1.4",
+    "@testing-library/user-event": "^13.5.0",
+    "cypress": "^9.6.1",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.1.2",

@@ -7,10 +7,10 @@
 @include media.medium {
   .wrapper {
     display: block;
-    grid-column: 1;
     width: clamp(300px, 30%, 400px);
     min-height: 755px;
     height: 100vh;
     background-color: var(--primary-color);
   }
 }
+

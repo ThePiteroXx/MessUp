@@ -21,28 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:e2e": "cypress open --project ./src/e2e",
+    "test:e2e": "cypress open",
     "eject": "react-scripts eject"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.js",
-      "!src/index.js",
-      "!src/hooks/*.js",
-      "!src/context/*.js"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 90,
-        "functions": 90,
-        "lines": 90,
-        "statements": 90
-      }
-    },
-    "coverageReporters": [
-      "html",
-      "text"
-    ]
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json}": [

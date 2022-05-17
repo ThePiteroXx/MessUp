@@ -17,6 +17,9 @@ export const useChangePassword = () => {
     send(actions.fetch);
 
     try {
+      if (!oldPassowrd.length || !newPassword.length) {
+        throw new Error('Input cannot be empty');
+      }
       const credential = EmailAuthProvider.credential(user.email, oldPassowrd);
 
       // require that the user has recently signed in
@@ -42,7 +45,12 @@ export const useChangePassword = () => {
             send({ type: actions.failure, value: 'Too many requests. Please try again later.' });
             break;
           default:
-            send({ type: actions.failure, value: 'Something gone wrong!' });
+            if (err.code) {
+              send({ type: actions.failure, value: 'Something gone wrong' });
+            } else {
+              const errorMess = err.toString().replace('Error: ', '');
+              send({ type: actions.failure, value: errorMess });
+            }
         }
         setTimeout(() => send(actions.reset), 8000);
       }

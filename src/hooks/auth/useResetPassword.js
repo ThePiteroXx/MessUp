@@ -18,6 +18,8 @@ export const useResetPassword = () => {
     try {
       await confirmPasswordReset(auth, oobCode, newPassword);
 
+      if (!newPassword.length) throw new Error('Input cannot be empty');
+
       if (!isCancelled) {
         send({ type: actions.success, value: 'Your password has been reset. Go to the login page.' });
       }
@@ -31,7 +33,12 @@ export const useResetPassword = () => {
             send({ type: actions.failure, value: 'Password should be at least 6 characters.' });
             break;
           default:
-            send({ type: actions.failure, value: 'Something gone wrong!' });
+            if (err.code) {
+              send({ type: actions.failure, value: 'Something gone wrong' });
+            } else {
+              const errorMess = err.toString().replace('Error: ', '');
+              send({ type: actions.failure, value: errorMess });
+            }
         }
       }
     }

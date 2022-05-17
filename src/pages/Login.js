@@ -24,7 +24,7 @@ const Login = () => {
           <span>Password:</span>
           <input className="input" required type="password" {...register('password')} />
         </label>
-        <Link to="/forgot-password" className="link">
+        <Link to="/forgot-password" className="link" style={{alignSelf: 'flex-start'}}>
           Forgot password?
         </Link>
         {currentState === 'loading' ? (

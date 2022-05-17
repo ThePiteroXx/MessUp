@@ -17,11 +17,13 @@ const EditProfil = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.user}>
+        <div className={styles.avatar}>
         <Avatar src={user.photoURL} />
-        <p>{user.displayName}</p>
         <Link to="/profile" className={styles['edit-btn']}>
           <Setting />
         </Link>
+        </div>
+        <p>{user.displayName}</p>
       </div>
       <div className={styles.icons}>
         <Link to="/notifications">

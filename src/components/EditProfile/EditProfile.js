@@ -18,10 +18,10 @@ const EditProfil = () => {
     <div className={styles.wrapper}>
       <div className={styles.user}>
         <div className={styles.avatar}>
-        <Avatar src={user.photoURL} />
-        <Link to="/profile" className={styles['edit-btn']}>
-          <Setting />
-        </Link>
+          <Avatar src={user.photoURL} />
+          <Link to="/profile" className={styles['edit-btn']}>
+            <Setting />
+          </Link>
         </div>
         <p>{user.displayName}</p>
       </div>

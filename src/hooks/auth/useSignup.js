@@ -23,8 +23,8 @@ export const useSignup = () => {
       // check inputs
       if (!email.length || !password.length || !displayName.length) {
         throw new Error('There cannot be empty fields');
-      } else if(displayName.length > 15) {
-        throw new Error('Display name cannot be longer than 15 characters ')
+      } else if (displayName.length > 15) {
+        throw new Error('Display name cannot be longer than 15 characters ');
       }
 
       // signup
@@ -68,7 +68,7 @@ export const useSignup = () => {
             send({ type: actions.failure, value: 'Your email is invalid. Check that the email you entered is correct.' });
             break;
           default:
-            if(err.code) {
+            if (err.code) {
               send({ type: actions.failure, value: 'Please improve your signup form.' });
             } else {
               const errorMess = err.toString().replace('Error: ', '');

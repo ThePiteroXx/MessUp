@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAuthContext } from './useAuthContext';
+import { useChatContext } from 'hooks/useChatContext';
 import useStateMachine from '@cassiozen/usestatemachine';
 
 // firebase imports
@@ -14,6 +15,7 @@ export const useLogout = () => {
   const [machine, send] = useStateMachine(machineConfig); //machine of state menagement
   const [isCancelled, setIsCancelled] = useState(false);
   const { dispatch, user } = useAuthContext();
+  const { dispatchChat } = useChatContext();
 
   const logout = async () => {
     send(actions.fetch);
@@ -29,6 +31,9 @@ export const useLogout = () => {
 
       // dispatch logout action
       dispatch({ type: 'LOGOUT' });
+
+      // clear chat
+      dispatchChat(null);
 
       // update state
       if (!isCancelled) send(actions.success);

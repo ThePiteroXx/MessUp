@@ -50,7 +50,7 @@ As a user, you can send invitations to other users who are registered and write 
 
 ### Info
 
-My node version - v14.17.3 
+My node version - v16.14.2 
 * npm
   ```sh
   npm node --version
@@ -76,23 +76,27 @@ My node version - v14.17.3
     REACT_APP_MESSAGING_SENDER_ID=your_config
     REACT_APP_APP_ID=your_config
    ```
+4. Install NPM packages
+    ```sh
+    npm run start
+    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Available scripts
 
-| Command                   | Description                   |     |
-| ------------------------- | ----------------------------- | --- |
-| `npm run start`           | Open local server             |     |
-| `npm run build`           | Create optimized build        |     |
-| `npm run test`            | Run tests                     |     |
-| `npm run test:e2e`        | Run tests cypress             |     |
+| Command                   | Description                   |  
+| ------------------------- | ----------------------------- |
+| `npm run start`           | Open local server             |     
+| `npm run build`           | Create optimized build        |     
+| `npm run test`            | Run tests                     |     
+| `npm run test:e2e`        | Run tests cypress             |     
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Live 📍
-
+[https://messup.netlify.app/](https://messup.netlify.app/)
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## License 🔱

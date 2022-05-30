@@ -31,7 +31,6 @@ export const useLogin = () => {
       });
       if (!isCancelled) send(actions.success);
     } catch (err) {
-      console.log(err.message, err.code);
       if (!isCancelled)
         switch (err.code) {
           case 'auth/wrong-password':
